@@ -28,8 +28,8 @@ extension SplashPresenterImpl: SplashPresenterProtocol {
                 self?.viewModel = resultArrayDes
                 self?.viewController?.fetchDataFromPresent()
             }
-        }, failure:{ (error) in
-            print(error?.localizedDescription ?? "Aqui Andres mete gamba")
+        }, failure: { (error) in
+            print(error?.localizedDescription ?? "Aqui Uru mete el Gambazo!")
         })
     }
     

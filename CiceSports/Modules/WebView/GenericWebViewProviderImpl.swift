@@ -1,4 +1,4 @@
-// MenuProvider.swift
+// GenericWebViewProvider.swift
 // Architecture VIPER
 //
 // This source file is open source project in iOS
@@ -7,23 +7,26 @@
 import Foundation
 import Combine
 
-protocol MenuProviderProtocol {
-     func fetchConsejos(completionHandler: @escaping (Result<ResponseConsejosModel, NetworkingError>) -> ())
+protocol GenericWebViewProviderProtocol {
     
 }
 
-class MenuProviderImpl: MenuProviderProtocol {
+class GenericWebViewProviderImpl: GenericWebViewProviderProtocol {
 
     let provider: RequestManagerProtocol = RequestManager()
-    var cancellable: Set<AnyCancellable> = []
     
-    internal func fetchConsejos(completionHandler: @escaping (Result<ResponseConsejosModel, NetworkingError>) -> ()) {
+    ///
+    ///Ejemplo de petición con Combine OJO no borrar
+    ///
+    /*var cancellable: Set<AnyCancellable> = []
+    
+    internal func fetchMenu(completionHandler: @escaping (Result<ResponseMenuModel, ApiError>) -> ()) {
         
         let request = RequestDTO(params: nil,
                                  method: .get,
-                                 endpoint: URLEndpoint.baseUrl+URLEndpoint.endpointConsejosDeportes)
+                                 endpoint: URLEndpoint.baseUrl+URLEndpoint.endpointMenu)
         
-        self.provider.requestGeneric(requestDTO: request, entityClass: ResponseConsejosModel.self)
+        self.provider.requestGeneric(requestDto: request, entityClass: ResponseMenuModel.self)
             .sink { [weak self] (completion) in
                 guard self != nil else { return }
                 switch completion {
@@ -32,11 +35,11 @@ class MenuProviderImpl: MenuProviderProtocol {
                 case .failure(let error):
                     completionHandler(.failure(error))
                 }
-        } receiveValue: { [weak self] responseConsejosModel in
+        } receiveValue: { [weak self] responseMenuModel in
             guard self != nil else { return }
-            completionHandler(.success(responseConsejosModel))
+            completionHandler(.success(responseMenuModel))
         }.store(in: &cancellable)
-    }
+    }*/
     
 }
 
